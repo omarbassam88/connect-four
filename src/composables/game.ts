@@ -15,8 +15,8 @@ export interface Cell {
 type Board = Cell[][]
 type Winner = "player" | "ai" | "tie" | null;
 
-const numRows: number = 7;
-const numCols: number = 6;
+const numRows: number = 6;
+const numCols: number = 7;
 const emptyBoard: Board = new Array(numRows)
 	.fill(0)
 	.map((_, row) =>
