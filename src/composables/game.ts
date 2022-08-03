@@ -163,7 +163,7 @@ function minimax(depth: number, maximize: boolean): number {
 	if (win == "player") return -200;
 	if (win == "ai") return 200;
 
-	if (depth < 1) return score(Color.AI) - score(Color.Player);
+	if (depth < 0) return score(Color.AI) - score(Color.Player);
 	if (maximize) {
 		let maxVal: number = -Infinity;
 		for (let col = 0; col < numCols; col++) {
@@ -220,7 +220,7 @@ function playBot() {
 					j = col;
 				}
 
-				console.log(maxVal)
+				console.log("Max: ", maxVal)
 			}
 		}
 	}

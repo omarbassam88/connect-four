@@ -24,31 +24,37 @@ function onCellClicked(i: number, j: number) {
 
 <template>
 	<h1>Connect Four</h1>
-	<div class="board">
-		<div class="row" v-for="(row, rowIndex) of board">
-			<div class="cell" :style="{
-				backgroundColor:
-					cell.color != Color.Empty
-						? cell.color
-						: cell.allowed
-							? Color.Empty
-							: 'gray',
-			}" v-for="(cell, cellIndex) of row" @click="onCellClicked(rowIndex, cellIndex)"></div>
+	<div class="container">
+		<div class="board">
+			<div class="row" v-for="(row, rowIndex) of board">
+				<div class="cell" :style="{
+					backgroundColor:
+						cell.color != Color.Empty
+							? cell.color
+							: cell.allowed
+								? Color.Empty
+								: 'gray',
+				}" v-for="(cell, cellIndex) of row" @click="onCellClicked(rowIndex, cellIndex)"></div>
+			</div>
 		</div>
 	</div>
-	<div v-if="winner">
+	<h2 v-if="winner">
 		{{ winnerMsg }}
-	</div>
-	<div v-else>
+	</h2>
+	<h2 v-else>
 		{{ "It's " + (turn ? "Your" : "AI") + " turn now." }}
-	</div>
+	</h2>
 </template>
 
 <style scoped>
+.container {
+	display: flex;
+	justify-content: center;
+}
+
 .board {
 	background-color: #3232cb;
-	padding-top: 1rem;
-	padding-bottom: 1rem;
+	padding: 1rem;
 
 }
 
