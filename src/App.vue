@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useGame, Color } from "./composables/game.ts";
+import { useGame, Color } from "./composables/game";
 
 const { board, update, turn, winner } = useGame();
 const winnerMsg = computed<string>(() => {
@@ -16,7 +16,7 @@ const winnerMsg = computed<string>(() => {
 	}
 })
 
-function onCellClicked(i, j) {
+function onCellClicked(i: number, j: number) {
 	if (!turn.value || winner.value) return;
 	update(i, j, Color.Player);
 }

@@ -46,7 +46,7 @@ function checkWinner(): Winner {
 		if (board.value[i][j - 3].color != x) return false
 		return true
 	}
-	const isRightFourSame = (i, j) => {
+	const isRightFourSame = (i: number, j: number) => {
 		if (j > numCols - 4) return false
 		let x = board.value[i][j].color
 		if (board.value[i][j + 1].color != x) return false
@@ -54,7 +54,7 @@ function checkWinner(): Winner {
 		if (board.value[i][j + 3].color != x) return false
 		return true
 	}
-	const isBottomFourSame = (i, j) => {
+	const isBottomFourSame = (i: number, j: number) => {
 		if (i > numRows - 4) return false
 		let x = board.value[i][j].color
 		if (board.value[i + 1][j].color != x) return false
@@ -62,7 +62,7 @@ function checkWinner(): Winner {
 		if (board.value[i + 3][j].color != x) return false
 		return true
 	}
-	const isLeftDiagonalFourSame = (i, j) => {
+	const isLeftDiagonalFourSame = (i: number, j: number) => {
 		if (j > numCols - 4 || i > numRows - 4) return false
 		let x = board.value[i][j].color
 		if (board.value[i + 1][j + 1].color != x) return false
@@ -70,7 +70,7 @@ function checkWinner(): Winner {
 		if (board.value[i + 3][j + 3].color != x) return false
 		return true
 	}
-	const isRightDiagonalFourSame = (i, j) => {
+	const isRightDiagonalFourSame = (i: number, j: number) => {
 		if (j < 3 || i > numRows - 4) return false
 		let x = board.value[i][j].color
 		if (board.value[i + 1][j - 1].color != x) return false
@@ -199,8 +199,8 @@ function minimax(depth: number, maximize: boolean): number {
 
 function playBot() {
 	let maxVal = -Infinity;
-	let i: number;
-	let j: number;
+	let i: number = 0;
+	let j: number = 0;
 	for (let col = 0; col < numCols; col++) {
 		for (let row = numRows - 1; row >= 0; row--) {
 			if (board.value[row][col].allowed) {
