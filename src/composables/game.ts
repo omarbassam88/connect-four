@@ -122,26 +122,22 @@ function score(color: Color): number {
 	};
 	const leftDiagonalScore = (i: number, j: number) => {
 		let count = 0;
-		if (i < numRows && j < numCols && board.value[i++][j++].color == color)
-			count++;
-		if (i < numRows && j < numCols && board.value[i++][j++].color == color)
-			count++;
-		if (i < numRows && j < numCols && board.value[i++][j++].color == color)
-			count++;
-		if (i < numRows && j < numCols && board.value[i++][j++].color == color)
-			count++;
+		if (i < numRows && j < numCols && board.value[i++][j++].color == color) count++;
+		if (i < numRows && j < numCols && board.value[i++][j++].color == color) count++;
+		if (i < numRows && j < numCols && board.value[i++][j++].color == color) count++;
+		if (i < numRows && j < numCols && board.value[i++][j++].color == color) count++;
 		return points[count];
 	};
 
 	const rightDiagonalScore = (i: number, j: number) => {
 		let count = 0;
-		if (i < numRows && j < numCols && board.value[i++][j--].color == color)
+		if (i < numRows && j < numCols && j > 0 && board.value[i++][j--].color == color)
 			count++;
-		if (i < numRows && j < numCols && board.value[i++][j--].color == color)
+		if (i < numRows && j < numCols && j > 0 && board.value[i++][j--].color == color)
 			count++;
-		if (i < numRows && j < numCols && board.value[i++][j--].color == color)
+		if (i < numRows && j < numCols && j > 0 && board.value[i++][j--].color == color)
 			count++;
-		if (i < numRows && j < numCols && board.value[i++][j--].color == color)
+		if (i < numRows && j < numCols && j > 0 && board.value[i++][j--].color == color)
 			count++;
 		return points[count];
 	};
@@ -150,7 +146,7 @@ function score(color: Color): number {
 
 	for (let i = 0; i < numRows; ++i) {
 		for (let j = 0; j < numCols; j++) {
-			if (board.value[i][j] == color) {
+			if (board.value[i][j].color == color) {
 				total += horizontalScore(i, j);
 				total += verticalScore(i, j);
 				total += leftDiagonalScore(i, j);
